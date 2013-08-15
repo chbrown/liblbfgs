@@ -14,9 +14,29 @@ only if the objective function `F(x)` and its gradient `G(x)` are computable.
 
 Refer to the [libLBFGS web site](http://www.chokkan.org/software/liblbfgs/) for more information.
 
-## Installation
+
+## Installation instructions
+
+### Get the requisite development environment
+
+* CentOS / Redhat / Fedora:
+
+        yum groupinstall "Development Tools"
+
+* Ubuntu:
+
+        apt-get install build-essential
+
+* OS X:
+  + Get [Xcode](https://itunes.apple.com/us/app/xcode/id497799835) from the Mac App Store.
+  + Get [homebrew](http://brew.sh/) and install the packages we'll need:
+
+        brew install coreutils shtool
+
+### Install from source repository:
 
     git clone https://github.com/chbrown/liblbfgs
+    cd liblbfgs
     ./configure
     make
     make install
@@ -34,11 +54,11 @@ This will produce the following files (depending on your system's build defaults
     /usr/local/lib/liblbfgs.so -> liblbfgs-1.10.so
     /usr/local/share/doc/liblbfgs/*
 
-More documentation about the configuration settings can be found in []().
+More documentation about the configuration settings can be found in [INSTALL](INSTALL).
 
 ## License
 
 libLBFGS is distributed under the terms of the [MIT license](COPYING).
 
-Copyright (c) 1990, Jorge Nocedal
-Copyright (c) 2007-2010, Naoaki Okazaki
+* Copyright (c) 1990, Jorge Nocedal
+* Copyright (c) 2007-2010, Naoaki Okazaki
