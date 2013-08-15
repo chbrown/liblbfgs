@@ -29,7 +29,7 @@ cache files.)
 
    If you need to do unusual things to compile the package, please try
 to figure out how `configure' could check whether to do them, and mail
-diffs or instructions to the address given in the `README' so they can
+diffs or instructions to the address given in the `README.md' so they can
 be considered for the next release.  If you are using the cache, and at
 some point `config.cache' contains results you don't want to keep, you
 may remove or edit it.
@@ -129,7 +129,7 @@ Some packages pay attention to `--enable-FEATURE' options to
 `configure', where FEATURE indicates an optional part of the package.
 They may also pay attention to `--with-PACKAGE' options, where PACKAGE
 is something like `gnu-as' or `x' (for the X Window System).  The
-`README' should mention any `--enable-' and `--with-' options that the
+`README.md' should mention any `--enable-' and `--with-' options that the
 package recognizes.
 
    For packages that use the X Window System, `configure' can usually
@@ -229,3 +229,27 @@ overridden in the site shell script).
 `configure' also accepts some other, not widely useful, options.  Run
 `configure --help' for more details.
 
+Note on SSE/SSE2 optimization
+=========================================================================
+This library has SSE/SSE2 optimization routines for vector arithmetic
+operations on Intel/AMD processors. The SSE2 routine is for 64 bit double
+values, and the SSE routine is for 32 bit float values. Since the default
+parameters in libLBFGS are tuned for double precision values, it may need
+to modify these parameters to use the SSE optimization routines.
+
+To use the SSE2 optimization routine, specify --enable-sse2 option to the
+configure script.
+
+$ ./configure --enable-sse2
+
+To build libLBFGS with SSE2 optimization enabled on Microsoft Visual
+Studio 2005, define USE_SSE and __SSE2__ symbols.
+
+Make sure to run libLBFGS on processors where SSE2 instrunctions are
+available. The library does not check the existence of SSE2 instructions.
+
+To package maintainers,
+
+Please do not enable SSE/SSE2 optimization routine. The library built
+with SSE/SSE2 optimization will crash without any notice when necessary
+SSE/SSE2 instructions are unavailable on CPUs.
